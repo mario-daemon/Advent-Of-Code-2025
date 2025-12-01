@@ -1,30 +1,19 @@
-# Done in 1h 18m
+# Part 1 done in 1h 18m
 
 arrow = 50
 password = 0
 rotations = []
 
-def move_arrow(arrow, direction, n):
+def move_arrow(arrow, direction, n) -> tuple:
 
-    new_arrow = arrow + (n if direction == 'right' else -n) # right is positive, left is negative
+    new_arrow = (arrow + (n if direction == 'right' else -n)) # left is negative, right is positive
 
-    print(f'arrow={arrow}, new arrow={new_arrow}, direction = {direction}, steps = {n}') #debugging
+    wrapped_new_arrow = new_arrow % 100
 
-    # To make sure the arrow loops back and stays between 0 and 99:
+    #debugging print
+    #print(f'arrow={arrow}, new arrow={wrapped_new_arrow}, direction = {direction}, steps = {n}')
 
-    hundreds_place = 1
-
-    if new_arrow < 0:
-        hundreds_place = new_arrow // -100
-    elif new_arrow > 100:
-        hundreds_place = new_arrow // 100
-
-    if new_arrow >= 100:
-        return new_arrow - (100*hundreds_place)
-    elif new_arrow < 0:
-        return new_arrow + (100*hundreds_place)
-    else:
-        return new_arrow
+    return wrapped_new_arrow
 
 with open("rotations.txt", "r") as file:
     for line in file:
@@ -46,4 +35,4 @@ for rotation in rotations:
 
     arrow = new_arrow
 
-print("\nPASSWORD:", password)
+print("\nPart 1 PASSWORD:", password)
