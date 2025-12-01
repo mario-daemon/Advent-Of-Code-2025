@@ -13,16 +13,10 @@ def move_arrow(arrow, direction, n) -> tuple:
 
     # This is to see if and how many loops the arrow does
     if direction == 'right':
-        passed_zero = (arrow + n >= 100) # Bool
-    elif direction == 'left':
-        passed_zero = (arrow - n < 0) # Bool
-
-    if passed_zero:
-        loops = abs(new_arrow // 100)
+        loops = (abs(new_arrow) - 1) // 100 # because if new_arrow = 100 it hasn't looper OVER, it has landed directly on it
     else:
-        loops = 0
-    
-    # what if it starts on 0 ? what if it ends on 0 ?
+        loops = abs(new_arrow) // 100 # same, but if new_arrow = 0
+    passed_zero = loops > 0
 
     #debugging print
     print(f'arrow={arrow}, new arrow={wrapped_new_arrow}, direction = {direction}, steps = {n}, passed_z = {passed_zero}, loops: {loops}')
@@ -44,19 +38,18 @@ for rotation in rotations:
     elif rotation[0] == 'R':
         new_arrow = move_arrow(arrow, 'right', n_clicks)
 
-    print(new_arrow)
-
     if new_arrow[0] == 0:
         password += 1
         password2 += 1
     
     if new_arrow[1] == True: #Passed zero
         password2 += 1*new_arrow[2]
-
-    print("\nPart 1 PASSWORD:", password)
+        pass
+    
+    #print("Part 1 PASSWORD:", password)
     print("Part 2 PASSWORD:", password2)
 
     arrow = new_arrow[0]
 
-print("\nPart 1 PASSWORD:", password)
+#print("Part 1 PASSWORD:", password)
 print("Part 2 PASSWORD:", password2)
