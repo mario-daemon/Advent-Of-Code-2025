@@ -23,8 +23,10 @@ def find_largest_nums(bank) -> tuple:
 
     return first_largest, second_largest
 
-def make_into_joltage(b1, b2) -> int:
-    combined_digits = str(b1) + str(b2)
+def make_into_joltage(*args) -> int:
+    combined_digits = ''
+    for battery in args:
+        combined_digits += str(battery)
     return int(combined_digits)
 
 with open('batteries.txt','r') as file:
