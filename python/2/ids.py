@@ -5,7 +5,7 @@ start = time.perf_counter()
 
 list = []
 
-def get_invalid_ids(min: int, max: int) -> int:
+def get_invalid_ids(min: int, max: int):
 
     min = int(min)
     max = int(max)
