@@ -11,29 +11,17 @@ counter = 0
 
 for idx, line in enumerate(text):
 
-    is_top_line = (line == text[0])
-    is_bottom_line = (line == text[-1])
-
     for id, char in enumerate(line):
 
         if char == '.':
             continue
         else:
+            
+            is_top_line = (line == text[0])
+            is_bottom_line = (line == text[-1])
 
             is_first_char =(id == 0)
             is_last_char =(id == len(line)-1)
-
-            if is_top_line:   
-                tp = False
-
-            if is_bottom_line:
-                btm = False
-                
-            if is_first_char:
-                lf = False
-            
-            if is_last_char:
-                rt = False
             
 
             left = line[id-1] if not is_first_char else None
@@ -52,13 +40,7 @@ for idx, line in enumerate(text):
             for i in pos_of_interest:
                 if i == '@':
                     valid_neighbours += 1
-            '''
-            print("----")
-            print("l", idx, "p", id)
-            print(valid_neighbours)
-            print("----")
-            #print(len(valid_neighbours))
-            '''
+
             if valid_neighbours < 4:
                 counter += 1
 
