@@ -47,11 +47,11 @@ for idx, line in enumerate(text):
 
             pos_of_interest = [left, right, top, bottom, top_left, top_right, bottom_left, bottom_right]
 
-            valid_neighbours = []
+            valid_neighbours = 0
 
             for i in pos_of_interest:
                 if i == '@':
-                    valid_neighbours.append(i)
+                    valid_neighbours += 1
             '''
             print("----")
             print("l", idx, "p", id)
@@ -59,7 +59,7 @@ for idx, line in enumerate(text):
             print("----")
             #print(len(valid_neighbours))
             '''
-            if len(valid_neighbours) < 4:
+            if valid_neighbours < 4:
                 counter += 1
 
 
